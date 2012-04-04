@@ -42,6 +42,8 @@ include ('inc_banner.php');
 <div style="margin:30px auto;text-align:center;font-size:16;color:#000000;min-height:300px">
 <?php
 
+echo "f";
+
 if (isset($_POST['save_center'])) {
 	$disp_title	= $_POST['txtDisplayTitle'];
 	$disp_title = str_replace("'","&apos;",$disp_title);

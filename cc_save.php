@@ -85,7 +85,7 @@ if (isset($_POST['save_center'])) {
 		include ('inc_guidgen.php');
 		$guid = guid() ;
 		$query = "insert into cc_center values ('" . $guid . "'," .
-								"'" . $custguid . "'," ;
+								"'" . $custguid . "'," .
 								"'" . $ext 		. "', " . 
 								"'" . $disp_title . "', " . 
 								"'" . $to_email . "'," .

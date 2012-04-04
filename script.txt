@@ -29,7 +29,7 @@ insert into cc_customer values ('40AC9A7A-7316-11E1-93EB-4E544824019B', 'Trendwi
 create table if not exists cc_center (
 centguid varchar(36),
 custguid varchar(36),
-logoextn varchar(64),
+logoextn varchar(6),
 disptitl varchar(64),
 to_email varchar(128),
 cc_email varchar(128),

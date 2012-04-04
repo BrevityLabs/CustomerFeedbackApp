@@ -85,7 +85,7 @@ if (isset($_POST['save_center'])) {
 		include ('inc_guidgen.php');
 		$guid = guid() ;
 		$query = "insert into cc_center values ('" . $guid . "'," .
-								"'" . $custguid . "'," .
+								"'" . $custguid . "'," .	
 								"'" . $ext 		. "', " . 
 								"'" . $disp_title . "', " . 
 								"'" . $to_email . "'," .
@@ -94,6 +94,7 @@ if (isset($_POST['save_center'])) {
 		$result = mysql_query($query) or die ("query failed 1");		
 	} //endelse
 }
+
 
 if($centguid == NULL) { //new action
 	$query="select contemail from cc_customer where custguid='" .  $custguid ."'" ;

@@ -95,7 +95,6 @@ if (isset($_POST['save_center'])) {
 	} //endelse
 }
 
-
 if($centguid == NULL) { //new action
 	$query="select contemail from cc_customer where custguid='" .  $custguid ."'" ;
 	$result = mysql_query($query) or die ("query failed 2");

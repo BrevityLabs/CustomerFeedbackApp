@@ -41,8 +41,7 @@ include ('inc_banner.php');
 <div class='middle'>
 <div style="margin:30px auto;text-align:center;font-size:16;color:#000000;min-height:300px">
 <?php
-
-echo "f";
+$newguid = NULL;
 
 if (isset($_POST['save_center'])) {
 	$disp_title	= $_POST['txtDisplayTitle'];
@@ -56,21 +55,13 @@ if (isset($_POST['save_center'])) {
 	$centguid 	= $_POST['centguid'];
 	$custguid   = $_POST['custguid'];
 	
-	if ($logo_file != NULL) {
-		$target_path = "./images/";
-		
-		$target_path = $target_path . $logo_file;
-		$temp_file   = $_FILES['txtLogoFilename']['tmp_name'] ;
-		
-		if(move_uploaded_file($temp_file, $target_path)) {
-			echo "The file ".  $logo_file .	" has been uploaded";
-		} else {
-			echo "There was an error uploading the file, please try again!";
-		}
-		
-		//strip the file name of logo and keep the extn
-		$ext = strrchr($logo_file, '.') ;
+	if ($logo_file != NULL) {	
+	
+		$ext = explode(".",$logo_file);
+		$ext = end($ext);
+		$ext = "." . $ext;
 	}
+	
 				
 	if($centguid != NULL) { //edit action
 		$query="update cc_center set custguid='" . $custguid ."', " ;
@@ -85,19 +76,43 @@ if (isset($_POST['save_center'])) {
 		$result = mysql_query($query) or die ("query failed 0");
 	} else { //new action
 		include ('inc_guidgen.php');
-		$guid = guid() ;
-		$query = "insert into cc_center values ('" . $guid . "'," .
+		$newguid = guid() ;
+		$query = "insert into cc_center values ('" . $newguid . "'," .
 								"'" . $custguid . "'," .	
 								"'" . $ext 		. "', " . 
 								"'" . $disp_title . "', " . 
 								"'" . $to_email . "'," .
 								"'" . $cc_email . "'," .
 								"'" . $language . "')" ;
-		$result = mysql_query($query) or die ("query failed 1");		
+		$result = mysql_query($query) or die ("query failed 1");
+		$centguid = $newguid;		
 	} //endelse
+	
+
+	if ($logo_file != NULL) {				
+		
+		$ext = explode(".",$logo_file);
+		$ext = end($ext);		
+		$logo_file = $centguid . "." . $ext;		
+		
+		$target_path = "./images/";
+	
+		$target_path = $target_path . $logo_file;
+		$temp_file   = $_FILES['txtLogoFilename']['tmp_name'] ;
+	
+		if(move_uploaded_file($temp_file, $target_path)) {
+			echo "Center details has been uploaded";
+		} else {
+			echo "There was an error uploading the file, please try again!";
+		}
+	
+		//strip the file name of logo and keep the extn
+		$ext = strrchr($logo_file, '.') ;
+	}
+	
 }
 
-if($centguid == NULL) { //new action
+if($newguid != NULL) { //new action
 	$query="select contemail from cc_customer where custguid='" .  $custguid ."'" ;
 	$result = mysql_query($query) or die ("query failed 2");
 	while($row = mysql_fetch_array($result)) {

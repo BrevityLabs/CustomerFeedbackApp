@@ -101,7 +101,7 @@ if (isset($_POST['save_center'])) {
 		$temp_file   = $_FILES['txtLogoFilename']['tmp_name'] ;
 	
 		if(move_uploaded_file($temp_file, $target_path)) {
-			echo "Center details has been uploaded";
+			//echo "Center details has been uploaded";
 		} else {
 			echo "There was an error uploading the file, please try again!";
 		}
@@ -149,7 +149,6 @@ if($newguid != NULL) { //new action
 	echo " <br/>" ;
 }
 ?>
-
 	<br>	
 	<br>	
 	<br>	

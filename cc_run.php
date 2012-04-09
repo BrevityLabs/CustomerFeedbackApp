@@ -3,6 +3,20 @@
 	include('lang/lang_engine.php');
 	//override session language with site language
 	$lang = $_REQUEST['lang'];
+	
+	/*session_start();
+	if(isset($_REQUEST['lang']))
+	{
+		$lang = $_REQUEST['lang'];
+		$_SESSION['lang'] = $lang;
+	}
+	else 
+	{
+		$lang = $_SESSION['lang'];
+	}*/
+	
+	
+	
 ?>
 <html xmlns="http://www.w3.org/1999/xhtml"><head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -14,21 +28,31 @@
 
   <script src="js/ajax_master.js" type="text/javascript"></script>
   <script src="js/validate.js" type="text/javascript"></script>
-  <script><!--
+  <script>
+  
 	var tm = 0;
 	var t ;
-	var twitter_window,popup_window ;
+	var twitter_window ;	
 
 	function timer_reset() {
 		tm = 0 ;
 	}
 	function on_twitter_click() {
 		tm=tm+1;
+
+
+	 window.onblur = function(event) {
+		
 		if(tm>=60) {
 			twitter_window.close() ;
-			popup_window.close();
+			//popup_window.close();
 			tm=0;
 		}
+	 }
+
+
+	 
+	 	 
 		t = setTimeout("on_twitter_click();",1000);
 	}
 	function open_twitter_window() {
@@ -41,7 +65,8 @@
 			window_props);
 		on_twitter_click();
 	}
--->
+
+	
 </script>
 </head>
 
@@ -126,7 +151,7 @@
       </tbody>
 </table>
 <?php 
-	$params = "'" . $fn . "','" . $ln . "','" . $ph . "','" . $em . "','" . $co1 . "'" ;
+	$params = "'" . $fn . "','" . $ln . "','" . $ph . "','" . $em . "','" . $co1 . "','" . $lang . "'" ;
 ?>
 <div style="text-align:center;width:802px;margin:20px 50px auto;padding-bottom:5px;border:0px;">
 	<input class="send" value="" onclick="return validate_contact(<?php echo $params;?>);" type="submit" ></input>

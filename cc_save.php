@@ -104,12 +104,10 @@ if (isset($_POST['save_center'])) {
 			//echo "Center details has been uploaded";
 		} else {
 			echo "There was an error uploading the file, please try again!";
-		}
-	
+		}	
 		//strip the file name of logo and keep the extn
 		$ext = strrchr($logo_file, '.') ;
-	}
-	
+	}	
 }
 
 if($newguid != NULL) { //new action

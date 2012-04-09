@@ -1,3 +1,4 @@
+var lang = '';
 function validate_data(action, id) {
 
 	if(action == 'view') {
@@ -19,7 +20,9 @@ function validate_data(action, id) {
 	}
 }
 
-function validate_contact(fn,ln,ph,em,co) {
+function validate_contact(fn,ln,ph,em,co, ln) {
+lang = ln;
+
 var arr=new Array();
 arr[0] 		=			isBlank('txtFirstName',fn);
 arr[1]		=			isBlank('txtLastName',ln);
@@ -57,6 +60,8 @@ if(flag==true) {
 }
 return false;
 }
+
+
 /*
  * Validates before creation of a new center or modifying an existing center.
  * Checks if all the fields are entered, emails are in right format.
@@ -86,6 +91,7 @@ function validate_center() {
 }
 
 function contactUpdated() {
+		
 	var data = handleResponse("text");
 	var _innerHTML = "";
 	if (data!=undefined) {
@@ -93,9 +99,20 @@ function contactUpdated() {
 		if (data=='OK' || data=='FAILED'){
 			document.getElementById('cform').style.display='none';
 			if (data=='OK'){
-				_innerHTML = "<div style='text-align:center'>Thank you contacting with us. We will contact you soon</div>" ;
+				
+				if(lang=="en")					
+					_innerHTML = "<div style='text-align:center'>Thank you contacting with us. We will contact you soon</div>" ;
+				
+				else
+					_innerHTML = "<div style='text-align:center'> Votre commentaire a été envoyé ,nous allons vous contacter prochainement   </div>" ;					
+			
 			} else if (data=='FAILED') {
-				_innerHTML = "<div style='text-align:center'>Message sent failed. Check the provided email address</div>";
+				
+				if(lang=="en")				
+					_innerHTML = "<div style='text-align:center'>Message sent failed. Check the provided email address</div>";
+				else
+					_innerHTML = "<div style='text-align:center'> Message a échoué à envoyer. S'il vous plaît vérifier Courriel  </div>";
+			
 			}
 			document.getElementById('cformafter').innerHTML= _innerHTML;
 			document.getElementById('cformafter').style.display='block';
@@ -107,6 +124,7 @@ function contactUpdated() {
 
 function reset_display() {
 	var url = "cc_run.php?centguid="+document.getElementById('uniqueid').value;
+	url += '&lang='+lang;
 	window.open(url,"_self","") ;	
 }
 

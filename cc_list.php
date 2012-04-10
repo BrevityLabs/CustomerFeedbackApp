@@ -23,11 +23,12 @@ if (!isset($_SESSION['custguid'])) {
   <script src="js/validate.js" type="text/javascript"></script>
   <script> <!--
 	function open_ccenter(guid,lang) {
-		var wn_props = "left=0,top=0,fullscreen=1,toolbar=0,location=0,directories=no,status=no,menubar=0,scrollbars=0,resizable=no" ;
-		wn_props += ",width="+screen.width ;
-		wn_props += ",height="+screen.height ;
-		lang = lang.toLowerCase() ;
-		window.open('cc_run.php?lang='+lang+'&centguid='+guid,'',wn_props);
+			var wn_props = "left=0,top=0,fullscreen=1,toolbar=0,location=0,directories=no,status=no,menubar=0,scrollbars=0,resizable=no" ;
+			wn_props += ",width="+screen.width ;
+			wn_props += ",height="+screen.height ;
+			lang = lang.toLowerCase() ;
+			center_win = window.open('cc_run.php?lang='+lang+'&centguid='+guid,'center_win',wn_props);
+			center_win.focus();			
   	}
   -->
   </script>
@@ -54,17 +55,21 @@ if (!isset($_SESSION['custguid'])) {
 <!-- Middle Panel Start -->
 
 <div class="middle">
-<table><tr>
+<table style='width:786px;'><tr>
 	<td>
-		<font style="text-align:center;font-size:10pt"> <?php echo Translator::translate('list_ccenter_header',$lang);?></font>
+		<div style="width:396px;font-size:10pt"> 
+			<?php echo Translator::translate('list_ccenter_header',$lang);?>
+		</div>
+	</td><td>
 <?php  if ($_SESSION['is_admin'] == false) { ?>
+	<div  style="width:390px;text-align:right;font-size:10pt">
 		<?php echo Translator::translate('list_create_new',$lang);?>:	
-			<input type="button" class="newbutton" name="butNewClient" id="butNewClient" 
-					onclick="validate_data('new','');" ></input>
+		<input type="button" class="newbutton" name="butNewClient" id="butNewClient" onclick="validate_data('new','');" ></input>
+	</div>
 <?php 	} ?>					
 	</td>
 </tr></table>
-<table style="border:1px solid red;">
+<table style="border:1px">
 	<tr class="listing">
 		<th><?php echo Translator::translate('list_tabhead_serial',$lang);?></th>
 		<th> <?php echo Translator::translate('list_tabhead_logo',$lang);?> </th>
@@ -92,8 +97,8 @@ include("connection.php");
 			if ($i == 2) {
 				$dataval = $row[0] . $row[$i] ;
 ?>
-	<td style="border:1px solid red;">
-		<img width='150px' src='./images/<?echo $dataval;?>'>
+	<td style="border:1px ;">
+		<img width='150px' src='./logos/<?echo $dataval;?>'>
 		</img>
 	</td>
 <?php
@@ -101,7 +106,7 @@ include("connection.php");
 			}  else {
 				$dataval = $row[$i] ;
 ?>
-<td style="border:1px solid red;">
+<td style="border:1px ;">
 	<a 	href='' 
 		onclick="open_ccenter('<?echo $row[0];?>','<?echo $row[6];?>');">
 		<?echo $dataval;?>
@@ -111,15 +116,15 @@ include("connection.php");
 <?php
 			}//endif
 		}//endfor ?>
-<td style="border:1px solid red;">
+<td style="border:1px ;">
 	<input type="button" class="viewbutton" name="butViewClient" id="butViewClient" onclick="validate_data('view','<?echo $row[0];?>');"/>
 	<input type="button" class="edtbutton" name="butEditClient" id="butEditClient" onclick="validate_data('edit','<?echo $row[0];?>');"/>
 	<input type="button" class="delbutton" name="butDeleteClient" id="butDeleteClient" onclick="validate_data('delete','<?echo $row[0];?>');"/>
 </td>
-
+</tr>
 <?php		} //endwhile	
 ?>
-</tr></table>
+</table>
 
 </div> <!-- listing -->
 

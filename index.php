@@ -84,8 +84,8 @@ include("lang/lang_engine.php");
 <!-- Middle Panel End -->
 
 <!-- Footer Panel Start -->
-<div class="footer"  style="text-align:center;font-size:12pt;">
-<a href="admin.php"><?php echo Translator::translate('index_admin_login',$lang);?> </a>
+<div class="footer"  style='text-align:center;'>
+<a href="admin.php" style='font-size:10pt;color:#0000EE'><?php echo Translator::translate('index_admin_login',$lang);?> </a>
 </div>
 <!-- Footer Panel End -->
 

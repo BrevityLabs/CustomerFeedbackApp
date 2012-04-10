@@ -83,7 +83,12 @@ function compare(){
 }
 --></script>
 </head>
-<body>
+<?php if ($_SESSION['is_admin']) { ?>
+<body class='admin'>
+<?php } else { ?>
+<body class='regular'>
+<?php } ?>
+
 <div class="header">
 <table>
   <tr>
@@ -173,13 +178,13 @@ if ($action == 'edit' || $action == 'new') { // for new and edit
 <?php if ($action=='new') { 
 ?>
   <tr>
-		<td> <?php echo Translator::translate('index_label_login', $lang);?>: </td>
+		<td style='text-align:right;color:#0077EE'> <?php echo Translator::translate('index_label_login', $lang);?>: </td>
 		<td><input  class='textfield' type='text' name='txtLoginId' id='txtLoginId' value='' onblur='return validate_login();'> </td>
   </tr><tr>
-		<td><?php echo Translator::translate('index_label_password', $lang);?>: </td>
+		<td style='text-align:right;color:#0077EE'><?php echo Translator::translate('index_label_password', $lang);?>: </td>
 		<td> <input  class='textfield' type='password' name='txtPassword' id='txtPassword' value='' onblur='return validate_password();'> </td>
   </tr><tr>
-	<td><?php echo Translator::translate('index_label_repeat_password', $lang);?>: </td>
+	<td style='text-align:right;color:#0077EE'><?php echo Translator::translate('index_label_repeat_password', $lang);?>: </td>
 	<td> <input  class='textfield' type='password' name='txtRPassword' id='txtRPassword' value='' onblur='return compare();'> 	</td>
   </tr>
 <?php 

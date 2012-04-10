@@ -43,7 +43,7 @@ include ('inc_banner.php');
 <div style="margin:0 1 auto;font-size:10pt;color:#000000;text-align:center;"><?php echo Translator::translate('ccview_header',$lang);?></div>
 
 <ul class="footerContact">
-<div id="cform" style="display:block;width:800;height:250;margin:5px auto">
+<div id="cform" style="display:block;width:796px;margin:5px auto">
 <form action="" method="get" enctype="multipart/form-data" name="contactform" id="contactform">
 	<input name="centguid" id="centguid" type="hidden" value="<?php echo $centguid;?>">
     <table style="width:500px;border:1px;margin:0 150px auto;">
@@ -62,7 +62,7 @@ include ('inc_banner.php');
 		</tr>
       		<tr>
 			<td style='width:150px;border:0px;padding:10px 10px 13px 10px;text-align:right'><?php echo Translator::translate('list_tabhead_logo',$lang);?>	</td>
-          	<td style='border:0px;'> <img width='150px' src= './images/<?php echo $centguid.$row[1];?>'>  </td>
+          	<td style='border:0px;'> <img width='150px' src= './logos/<?php echo $centguid.$row[1];?>'>  </td>
 					</tr>
    		<tr>
 			<td style='width:150px;border:0px;padding:10px 10px 13px 10px;text-align:right'>	<?php echo Translator::translate('list_tabhead_toemail',$lang);?></td>

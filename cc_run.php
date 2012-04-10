@@ -3,20 +3,7 @@
 	include('lang/lang_engine.php');
 	//override session language with site language
 	$lang = $_REQUEST['lang'];
-	
-	/*session_start();
-	if(isset($_REQUEST['lang']))
-	{
-		$lang = $_REQUEST['lang'];
-		$_SESSION['lang'] = $lang;
-	}
-	else 
-	{
-		$lang = $_SESSION['lang'];
-	}*/
-	
-	
-	
+		
 ?>
 <html xmlns="http://www.w3.org/1999/xhtml"><head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -28,8 +15,14 @@
 
   <script src="js/ajax_master.js" type="text/javascript"></script>
   <script src="js/validate.js" type="text/javascript"></script>
-  <script>
-  
+  <script> <!-- 
+  	window.onfocus = temp ;
+
+	function temp(){
+		if (twitter_window != null)
+			twitter_window.close() ;
+	
+	}
 	var tm = 0;
 	var t ;
 	var twitter_window ;	
@@ -37,24 +30,20 @@
 	function timer_reset() {
 		tm = 0 ;
 	}
-	function on_twitter_click() {
+	
+	function set_timer_on() {
 		tm=tm+1;
 
-
-	 window.onblur = function(event) {
-		
-		if(tm>=60) {
+		//if you are not happy with 3 minutes of twitter time, increase the count below.
+		if(tm >= 180) {
 			twitter_window.close() ;
-			//popup_window.close();
 			tm=0;
+			return ;
 		}
-	 }
 
-
-	 
-	 	 
-		t = setTimeout("on_twitter_click();",1000);
+		t = setTimeout("set_timer_on();",1000);
 	}
+	
 	function open_twitter_window() {
 		var window_props = 'top=0,left=0,width='+ screen.width +
 			',height='+screen.height + ",fullscreen=1,toolbar=0" + 
@@ -63,10 +52,10 @@
 			'http://twitter.com/',
 			'', 
 			window_props);
-		on_twitter_click();
+		set_timer_on();
 	}
 
-	
+-->
 </script>
 </head>
 
@@ -90,7 +79,7 @@
 <div class="header">
 <table>
   <tr>
-	<td><div class="logo" style="background:url(./images/<?php echo $centguid.$logoextn; ?>) no-repeat;">&nbsp;</div></td>
+	<td><div class="logo" style="background:url(./logos/<?php echo $centguid.$logoextn; ?>) no-repeat;">&nbsp;</div></td>
 	<td><div class="advert"> <?php include ('cust_ad.php');?> </div></td>
   <tr>
 </table>

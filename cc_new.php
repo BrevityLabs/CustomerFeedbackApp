@@ -100,7 +100,7 @@ if(!$is_new) {
       		<input type="file" name="txtLogoFilename" id="txtLogoFilename" class="textfield" value="<?php echo $tmp;?>" ></input>
 <?php 
 if(!$is_new) {
-	echo "<img width='150px' src='./images/" . $centguid.$logoextn . "'>" ;
+	echo "<img width='150px' src='./logos/" . $centguid.$logoextn . "'>" ;
 } 
 ?>
           	</td>

@@ -6,7 +6,6 @@
 session_start() ;
 include ('connection.php');
 include ('lang/lang_engine.php');
-include ('inc_banner.php');
 ?>
 <html><head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -14,29 +13,30 @@ include ('inc_banner.php');
   <title> </title>
 	  
   <link href="css/reset.css" rel="stylesheet" type="text/css"/>
-  <?php if ($_SESSION['is_admin']) { ?>
-	  <link href="css/layout2.css" rel="stylesheet" type="text/css"/>
-  <?php } else { ?>
-	  <link href="css/layout.css" rel="stylesheet" type="text/css"/>
-  <?php } ?>
+  <link href="css/layout.css" rel="stylesheet" type="text/css"/>
    
   <script src="js/ajax_master.js" type="text/javascript"></script>
   <script src="js/validate.js" type="text/javascript"></script>
  
 </head>
 
-<body>
+<?php if ($_SESSION['is_admin']) { ?>
+<body class='admin'>
+<?php } else { ?>
+<body class='regular'>
+<?php } ?>
 
 <!-- Header Panel Start -->
 <div class="header">
 <table>
   <tr>
 	<td><div class="logo"></div></td>
-	<td><div class="title" style="text-align:center;"><h1>  </h1> </div></td>
-	<td><div class="advert"> <i><?php Translator::translate('all_advert',$lang);?></i> </div></td>
+	<td><div class="advert"> <?php include('ad.php');?> </div></td>
   </tr>
 </table>
 </div>
+
+<?php include ('inc_banner.php'); ?>
 
 <div class='middle'>
 <div style="margin:30px auto;text-align:center;font-size:16;color:#000000;min-height:300px">
@@ -95,7 +95,7 @@ if (isset($_POST['save_center'])) {
 		$ext = end($ext);		
 		$logo_file = $centguid . "." . $ext;		
 		
-		$target_path = "./images/";
+		$target_path = "./logos/";
 	
 		$target_path = $target_path . $logo_file;
 		$temp_file   = $_FILES['txtLogoFilename']['tmp_name'] ;
@@ -128,23 +128,12 @@ if($newguid != NULL) { //new action
 	$mailbody 		.=  "<br/><br/>-Regards" ;
 	
 	if(@mail($to1,$subject,$mailbody,$headers)) {
-	
-?>
-<?php echo Translator::translate('ccsave_succ_msg', $lang);?> <br/>
-<a href="cc_list.php"><?php echo Translator::translate('all_go_back2main', $lang);?></a>
-
-<?php 
+		echo Translator::translate('ccsave_succ_msg', $lang);
+		echo '<br/>' ;
 	} else {
-?>
-<?php echo Translator::translate('ccsave_fail_msg', $lang);?> <br/>
-<a href="cc_list.php"><?php echo Translator::translate('all_go_back2main', $lang);?></a>
-
-<?php 		
-	}//endif(@mail...
-
-} else {
-	echo Translator::translate('ccsave_succ_msg', $lang);
-	echo " <br/>" ;
+		echo Translator::translate('ccsave_fail_msg', $lang);
+		echo '<br/>' ;
+	}//endif(@mail...	
 }
 ?>
 	<br>	

@@ -89,6 +89,18 @@ function validate_center() {
 	}
 	return flag;
 }
+function validate_user_data(action, id) {
+
+	if(action == 'save') {
+		return true;		
+	} else {
+		if(action == 'delete') {
+			if (confirm("Are you sure to delete the user : "+ id + "?")) {
+				window.open("cu_delete.php?loginid="+id,"_self","") ;
+			}
+		}//end else
+	}
+}
 
 function contactUpdated() {
 		

@@ -11,7 +11,7 @@ include ('connection.php');
   <link href="css/layout.css" rel="stylesheet" type="text/css"/>
  
 </head>
-<body>
+<body class='regular'>
 <div class="header">
 <div class="title" style="text-align:center;margin:0 120 auto"><h1> New User Registration: Confirmation process</h1> </div>
 </div>

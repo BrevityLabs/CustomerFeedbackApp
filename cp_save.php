@@ -11,14 +11,18 @@ session_start();
 	  <link href="css/layout.css" rel="stylesheet" type="text/css"/>
   <?php } ?>
 </head>
-<body>
+<?php if ($_SESSION['is_admin']) { ?>
+<body class='admin'>
+<?php } else { ?>
+<body class='regular'>
+<?php } ?>
+
   <!-- Header Panel Start -->
 <div class="header">
 <table>
   <tr>
 	<td><div class="logo"></div></td>
-	<td><div class="title"><center><h1> <?php Translator::translate('ccdel_title',$lang);?></h1></center> </div></td>
-	<td><div class="advert"> <i> <?php Translator::translate('all_advert',$lang);?></i> </div></td>
+	<td><div class="advert"> <?php include('ad.php');?> </div></td>
   <tr>
 </table>
 </div>
@@ -69,7 +73,8 @@ if (isset($_POST['saveprofile'])) {
 }
 ?>
 <div class='middle'>
-<div style="margin:30px auto;text-align:center;font-size:16;color:#000000;min-height:300px">
+<table><tr><td>
+<div style="margin:30px auto;text-align:center;font-size:16;color:#000000;">
 
 <?php 
 if($custguid == NULL) { //new action
@@ -101,10 +106,11 @@ if($custguid == NULL) { //new action
 	<br>	
 	<br>	
 	<br>	
-		<ul class="footerContact" style="width:802;text-align:center">
+		<ul class="footerContact" style="width:788;text-align:center">
 				<input class="back" value="" onclick="history.go(-2);" type="" ></input>
 		</ul>
 	</div>
+	</td></tr></table>
 </div>
 <!-- end of middle -->
 

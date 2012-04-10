@@ -87,15 +87,14 @@ function compare(){
 <div class="header">
 <table>
   <tr>
-	<td><div class="logo" style="background:url(./images/admincoy.jpg) no-repeat;">&nbsp;</div></td>
-	<td><div class="title" style="text-align:center;"><h1> <?php echo Translator::translate('admin_subtitle',$lang);?> </h1> </div></td>
-	<td><div class="advert"> <i><?php echo Translator::translate('all_advert',$lang);?></i> </div></td>
+	<td><div class="logo">&nbsp;</div></td>
+	<td><div class="advert"> <i><?php include('ad.php');?></i> </div></td>
   <tr>
 </table>
 </div>
 
 <div class="banner">
-	<i></i>
+	<?php include ('inc_banner.php');?>
 </div>
 
 <?php
@@ -128,6 +127,7 @@ if ($action == 'view' || $action == 'edit') { //edit or view
 if ($action == 'view') {
 ?>
 <div class='middle'>
+	<div style="margin:0 1 auto;font-size:10pt;color:#000000;text-align:center;"> <?php echo Translator::translate('cpview_header',$lang);?> </div>
 <ul class="footerContact">
 <table style='width:500px;border:10px;margin:0 180px auto;'>
 	<tr><td style='text-align:right;color:#0077EE'><?php echo Translator::translate('pro_label_org_name', $lang);?> : </td><td><?php echo $custname;?></td></tr>
@@ -144,6 +144,12 @@ if ($action == 'view') {
 if ($action == 'edit' || $action == 'new') { // for new and edit
 ?>
 <div class='middle'>
+	<div style="margin:0 1 auto;font-size:10pt;color:#000000;text-align:center;"> <?php 
+	if ($action == 'new')
+		echo Translator::translate('cpnew_header',$lang);
+	else 
+		echo Translator::translate('cpedit_header',$lang);
+	?> </div>
 	<form action="cp_save.php" method="POST" id="cform" name="cform">
 	<input type='hidden' name='txtCustGuid' id='txtCustGuid' value='<?php echo $custguid;?>'>
 <ul class="footerContact">
@@ -193,10 +199,10 @@ if ($action == 'edit' || $action == 'new') { // for new and edit
 </form>
 </div>
 
-<!-- Copyright Start 
+<!-- Copyright Start -->
 <?php 
 	include('inc_copyright.php');
 	mysql_close();
 ?>
-	 Copyright End -->
+<!--  Copyright End -->
 </body></html>

@@ -9,25 +9,24 @@ $centguid = $_REQUEST['centguid'] ;
   <title>Customer Comment Center</title>
 	  
   <link href="css/reset.css" rel="stylesheet" type="text/css"/>
-  <?php if ($_SESSION['is_admin']) { ?>
-	  <link href="css/layout2.css" rel="stylesheet" type="text/css"/>
-  <?php } else { ?>
-	  <link href="css/layout.css" rel="stylesheet" type="text/css"/>
-  <?php } ?>
+  <link href="css/layout.css" rel="stylesheet" type="text/css"/>
   
   <script src="js/ajax_master.js" type="text/javascript"></script>
   <script src="js/validate.js" type="text/javascript"></script>
  </head>
 
-<body>
-
+<?php if ($_SESSION['is_admin']) { ?>
+<body class='admin'>
+<?php } else { ?>
+<body class='regular'>
+<?php } ?>
+ 
 <!-- Header Panel Start -->
 <div class="header">
 <table>
   <tr>
-	<td><div class="logo" style="background:url(./images/admincoy.jpg) no-repeat;">&nbsp;</div></td>
-	<td><div class="title"><center><h1><?php echo Translator::translate('ccnew_header',$lang);?></h1></center> </div></td>
-	<td><div class="advert"> <i> <?php echo Translator::translate('all_advert',$lang);?></i> </div></td>
+	<td><div class="logo">&nbsp;</div></td>
+	<td><div class="advert"> <i> <?php include('ad.php');?></i> </div></td>
   <tr>
 </table>
 </div>
@@ -41,11 +40,13 @@ include ('inc_banner.php');
 
 <!-- Middle Panel Start -->
 <div class="middle">
+<div style="margin:0 1 auto;font-size:10pt;color:#000000;text-align:center;"><?php echo Translator::translate('ccview_header',$lang);?></div>
+
 <ul class="footerContact">
-<div id="cform" style="display:block;width:802;height:250;margin:5px auto">
+<div id="cform" style="display:block;width:800;height:250;margin:5px auto">
 <form action="" method="get" enctype="multipart/form-data" name="contactform" id="contactform">
 	<input name="centguid" id="centguid" type="hidden" value="<?php echo $centguid;?>">
-    <table style="width:500px;border:1px;margin:0 180px auto;">
+    <table style="width:500px;border:1px;margin:0 150px auto;">
       <tbody>
 <?php
 	include("connection.php");
@@ -61,7 +62,7 @@ include ('inc_banner.php');
 		</tr>
       		<tr>
 			<td style='width:150px;border:0px;padding:10px 10px 13px 10px;text-align:right'><?php echo Translator::translate('list_tabhead_logo',$lang);?>	</td>
-          	<td style='border:0px;'> <img src= './images/<?php echo $centguid.$row[1];?>'>  </td>
+          	<td style='border:0px;'> <img width='150px' src= './images/<?php echo $centguid.$row[1];?>'>  </td>
 					</tr>
    		<tr>
 			<td style='width:150px;border:0px;padding:10px 10px 13px 10px;text-align:right'>	<?php echo Translator::translate('list_tabhead_toemail',$lang);?></td>
@@ -111,12 +112,12 @@ include ('inc_banner.php');
 <div class="footer"> </div>
 <!-- Footer Panel End -->
 
-<!-- Copyright Start 
+<!-- Copyright Start -->
 <?php 
 	include('inc_copyright.php');
 	mysql_close();
 ?>
-	 Copyright End -->
+<!--  Copyright End -->
 
 </body>
 </html>

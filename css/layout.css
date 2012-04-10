@@ -7,17 +7,24 @@
 body{
     margin:0px;
 	padding:0px;
-	background: url(../images/header_bg.gif) top left repeat-x #FFF; 
 	color:#555555;
 	font-family: 'Droid Sans', sans-serif;
 	font-size:11px;
 	line-height:20px;
+	text-align: center;
+}
+body.regular{
+	background: url(../images/header_bg.gif) 5px 0px no-repeat #FFF; 
+}
+body.admin{
+    background: url(../images/header_bg_new.gif) 5px 0px no-repeat #FFF; 
 }
 div.header{
-    width:802px;
+    width:800px;
 	height:124px;
-	margin:5px 200px auto;
+	margin:3px 2px auto;
 	font-size:60px;
+	border: 1px;
 }
 div.header h1{
 	width:500px;
@@ -36,7 +43,7 @@ div.header h1 a{
 	text-indent:0px;
 }
 div.logo{
-	width:	120px;
+	width:	618px;
 	height:	120px;
 	margin:	0px 0px auto;
 	background:url(../images/logo.jpg) no-repeat;
@@ -48,7 +55,7 @@ div.title{
 }
 
 div.advert{
-	width:	120px;
+	width:	180px;
 	height:	120px;
 	margin:	0px 0px auto;
 }
@@ -91,10 +98,9 @@ div.mainMenu ul li a:hover, div.mainMenu ul li a.active{
 
 /* ----Banner ----*/
 div.banner{
-	height:32px; /* old value 336 */
-	width:802px;
-	margin:0px 200px auto;
-	border:1px  ;
+	height:36px; /* old value 336 */
+	width:800px;
+	margin:0px 4px auto;
 }
 div.bannerSlider{
 	height:336px;
@@ -163,18 +169,18 @@ div.serviceTabs li A:hover.more{
 }
 /* ----Middle Area ----*/
 div.middle{
-	width:802px;
+	width:800px;
 	min-height: 250px;
-	margin:0px 200px auto;
+	margin:5px 4px auto;
 	padding-bottom:5px;
 }
 div.middle H1{
 	display:block;
 	padding-bottom:5px;
-	font-size:25px;
+	font-size:22pt;
 	background:url(../images/header_bg.jpg);
-	/*text-transform:uppercase;
-	font-family: 'ColaborateLightRegular';*/
+	/*text-transform:uppercase; */
+	font-family: 'ColaborateLightRegular';
 }
 div.middle H2{
 	display:block;
@@ -185,7 +191,7 @@ div.middle H2{
 div.middle H3{
 	display:block;
 	padding-bottom:8px;
-	font-size:20px;
+	font-size:16px;
 }
 
 /* ----table for middle section ----*/
@@ -345,11 +351,8 @@ bottom:20% !important;
 /* ----footer ----*/
 div.footer{
 	float:top center;
-	width:802px;
-	margin:10px 200px auto;
-	min-height:50px;
-	padding:14px 0 0 0;
-	border: 1px;
+	width:800px;
+	margin:5px 4px auto;
 }
 ul.footerLinks{
 	float:left;
@@ -414,7 +417,7 @@ ul.social li img{
 }
 ul.footerContact{
 	float:center;
-	width:500px;
+	width:800px;
 	color:#808080;
 	font-size:12px;
 }
@@ -497,13 +500,20 @@ ul.footerContact H1{
 	border:0;
 	cursor:pointer;
 	}
+.footerContact .chatlive {
+	background:url(../images/chatlive.png) no-repeat;
+	width:125px;
+	height:40px;
+	border:0;
+	cursor:pointer;
+	}
 .copyright{
 	font-size:12px;
 	color:#a1a1a1;
 	display:block;
-	width: 802px;
-	margin:10px 200px;
-	padding:12px 0;
+	width: 800px;
+	margin:5px 4px;
+	padding:5px 0;
 	background:url(../images/line.gif) top left repeat-x;
 }
 .copyright span{

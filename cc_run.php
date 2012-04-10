@@ -70,7 +70,7 @@
 </script>
 </head>
 
-<body>
+<body class='regular'>
 
 <?php
 	
@@ -91,8 +91,7 @@
 <table>
   <tr>
 	<td><div class="logo" style="background:url(./images/<?php echo $centguid.$logoextn; ?>) no-repeat;">&nbsp;</div></td>
-	<td><div class="title" style="text-align: center"><h1> <?php echo $title; ?></h1> </div></td>
-	<td><div class="advert"> <i><?php echo Translator::translate('all_advert',$lang);?></i> </div></td>
+	<td><div class="advert"> <?php include ('cust_ad.php');?> </div></td>
   <tr>
 </table>
 </div>
@@ -111,39 +110,39 @@
 <div id="cform" style="display:block">
 <form action="" method="get" enctype="multipart/form-data" name="contactform" id="contactform">
 	<input name="uniqueid" id="uniqueid" type="hidden" value="<?php echo $centguid;?>">
-    <table style="width:500px;border:10px;margin:0 200px auto;">
+    <table style="width:500px;border:10px;margin:0 130px auto;">
       <tbody>
         <tr>
 <?php $fn = Translator::translate('cc_first_name',$lang);?>
-        	<td style="width:150px;border:0px;padding:10px 0px 13px 10px;"><?php echo $fn;?>:  </td>
-          <td style="border:0px;"> <input name="txtFirstName" id="txtFirstName" class="textfield" value="<?php echo $fn;?>" 
+        	<td><?php echo $fn;?>:  </td>
+          <td> <input name="txtFirstName" id="txtFirstName" class="textfield" value="<?php echo $fn;?>" 
           	onclick="changecolor('txtFirstName','<?php echo $fn;?>')" onfocus="changecolor('txtFirstName','<?php echo $fn;?>')" ></input>
           </td>
         </tr>
         <tr>
 <?php $ln = Translator::translate('cc_last_name',$lang);?>        
-        <td style="border:0px;padding:10px 0px 13px 10px;"><?php echo $ln?>:</td>
-          <td  style="border:0px;"><input name="txtLastName" id="txtLastName" class="textfield" value="<?php echo $ln;?>" 
+        <td><?php echo $ln?>:</td>
+          <td><input name="txtLastName" id="txtLastName" class="textfield" value="<?php echo $ln;?>" 
           	onclick="changecolor('txtLastName','<?php echo $ln;?>')" onfocus="changecolor('txtLastName','<?php echo $ln;?>')" ></input></td>
         </tr>
         <tr>
 <?php $ph = Translator::translate('cc_phone',$lang);?>        
-          <td style="border:0px;padding:10px 0px 13px 10px;"><?php echo $ph;?>:</td>
-		  <td style="border:0px;"><input name="txtPhone" id="txtPhone" class="textfield" value="<?php echo $ph;?>" 
+          <td><?php echo $ph;?>:</td>
+		  <td><input name="txtPhone" id="txtPhone" class="textfield" value="<?php echo $ph;?>" 
 		  	onclick="changecolor('txtPhone','<?php echo $ph;?>')" onfocus="changecolor('txtPhone','<?php echo $ph;?>')"></input></td>
         </tr>
         <tr>
 <?php $em = Translator::translate('cc_email',$lang);?>
-        <td style="border:0px;padding:10px 0px 13px 10px;"><?php echo $em?>:</td>
-          <td style="border:0px;"><input name="txtEmail" id="txtEmail" class="textfield" value="<?php echo $em;?>" 
+        <td><?php echo $em?>:</td>
+          <td><input name="txtEmail" id="txtEmail" class="textfield" value="<?php echo $em;?>" 
           	onclick="changecolor('txtEmail','<?php echo $em;?>')" onfocus="changecolor('txtEmail','<?php echo $em;?>')"></input></td>
         </tr>
 
         <tr>
 <?php $co = Translator::translate('cc_comment',$lang);?>        
 <?php $co1 = Translator::translate('cc_enter_comment',$lang);?>        
-                <td style="border:0px;padding:10px 0px 13px 10px;"><?php echo $co?>:</td>
-          <td style="border:0px;height:100px">
+          <td><?php echo $co?>:</td>
+          <td>
 			<textarea name="txtEnquiry" id="txtEnquiry" class="textArea" 
 							onclick="changecolor('txtEnquiry','<?php echo $co1?>')" 
 							onfocus="changecolor('txtEnquiry','<?php echo $co1?>')"><?php echo $co1;?></textarea></td>
@@ -153,13 +152,13 @@
 <?php 
 	$params = "'" . $fn . "','" . $ln . "','" . $ph . "','" . $em . "','" . $co1 . "','" . $lang . "'" ;
 ?>
-<div style="text-align:center;width:802px;margin:20px 50px auto;padding-bottom:5px;border:0px;">
+<div style="text-align:center;width:800px;margin:10px 10px auto;padding-bottom:5px;border:0px;">
 	<input class="send" value="" onclick="return validate_contact(<?php echo $params;?>);" type="submit" ></input>
     <input class="reset" value="" onclick="" type="reset" ></input> 
 </div>
 </form>
 </div> <!-- cform div End -->
-<div style="width:802px;height:10px;margin:5px 50px auto;border:0px;font-size:18px;display:none" id="cformafter">
+<div style="width:800px;height:10px;margin:5px 5px auto;border:0px;font-size:18px;display:none" id="cformafter">
 </div>
 </ul>
 </div>
@@ -168,20 +167,23 @@
 
 <!-- Footer Panel Start -->
 <div class="footer">
- <div style="text-align: center">
-  <a href="#" onclick="open_twitter_window();">
-		<img src="images/twitter.jpeg" height="100" width="100"/> <p/>
-  <font color="#ff6600"><font size="4"><?php echo Translator::translate('cc_twitter_launch',$lang);?></font></font></a>
- </div>
+ <ul class="footerContact">
+ <div style="text-align:center;">
+    <input class="chatlive" value="" onclick="open_twitter_window();" type="" ></input> 	  <p/>
+	  <a href="#" onclick="open_twitter_window();">
+		  <font color="#ff6600"><font size="4"><?php echo Translator::translate('cc_twitter_launch',$lang);?></font></font>
+	  </a>
+  </div>
+  </ul>
 </div>
 <!-- Footer Panel End -->
 
-<!-- Copyright Start 
+<!-- Copyright Start -->
 <?php 
 	include('inc_copyright.php');
 	mysql_close();
 ?>
-	 Copyright End -->
+<!--	 Copyright End -->
 
 
 </body>

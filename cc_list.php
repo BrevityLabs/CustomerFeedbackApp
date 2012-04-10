@@ -17,11 +17,7 @@ if (!isset($_SESSION['custguid'])) {
   <title><?php echo Translator::translate('title_launchpad',$lang);?></title>
 	  
   <link href="css/reset.css" rel="stylesheet" type="text/css"/>
-  <?php if ($_SESSION['is_admin']) { ?>
-	  <link href="css/layout2.css" rel="stylesheet" type="text/css"/>
-  <?php } else { ?>
-	  <link href="css/layout.css" rel="stylesheet" type="text/css"/>
-  <?php } ?>
+  <link href="css/layout.css" rel="stylesheet" type="text/css"/>
 	  
   <script src="js/ajax_master.js" type="text/javascript"></script>
   <script src="js/validate.js" type="text/javascript"></script>
@@ -36,16 +32,19 @@ if (!isset($_SESSION['custguid'])) {
   -->
   </script>
 </head>
-<body>
+<?php if ($_SESSION['is_admin']) { ?>
+<body class='admin'>
+<?php } else { ?>
+<body class='regular'>
+<?php } ?>
 
 <!-- Header Panel Start -->
 <div class="header">
 <table>
   <tr>
 	<td><div class="logo"></div></td>
-  	<td><div class="title"><center><h1> <?php echo Translator::translate('title_launchpad',$lang);?> </h1></center> </div></td>
-	<td><div class="advert"> <i> Insert an advertisement here</i> </div></td>	
-  <tr>
+	<td><div class="advert"> <?php include ('ad.php');?> </div></td>
+	<tr>
 </table>
 </div>
 <!-- Header Panel End -->
@@ -57,7 +56,7 @@ if (!isset($_SESSION['custguid'])) {
 <div class="middle">
 <table><tr>
 	<td>
-		<H3 style="text-align: center"> <?php echo Translator::translate('list_ccenter_header',$lang);?></H3>
+		<font style="text-align:center;font-size:10pt"> <?php echo Translator::translate('list_ccenter_header',$lang);?></font>
 <?php  if ($_SESSION['is_admin'] == false) { ?>
 		<?php echo Translator::translate('list_create_new',$lang);?>:	
 			<input type="button" class="newbutton" name="butNewClient" id="butNewClient" 
@@ -65,7 +64,7 @@ if (!isset($_SESSION['custguid'])) {
 <?php 	} ?>					
 	</td>
 </tr></table>
-<table>
+<table style="border:1px solid red;">
 	<tr class="listing">
 		<th><?php echo Translator::translate('list_tabhead_serial',$lang);?></th>
 		<th> <?php echo Translator::translate('list_tabhead_logo',$lang);?> </th>
@@ -93,8 +92,8 @@ include("connection.php");
 			if ($i == 2) {
 				$dataval = $row[0] . $row[$i] ;
 ?>
-	<td>
-		<img src='./images/<?echo $dataval;?>'>
+	<td style="border:1px solid red;">
+		<img width='150px' src='./images/<?echo $dataval;?>'>
 		</img>
 	</td>
 <?php
@@ -102,7 +101,7 @@ include("connection.php");
 			}  else {
 				$dataval = $row[$i] ;
 ?>
-<td>
+<td style="border:1px solid red;">
 	<a 	href='' 
 		onclick="open_ccenter('<?echo $row[0];?>','<?echo $row[6];?>');">
 		<?echo $dataval;?>
@@ -112,7 +111,7 @@ include("connection.php");
 <?php
 			}//endif
 		}//endfor ?>
-<td>
+<td style="border:1px solid red;">
 	<input type="button" class="viewbutton" name="butViewClient" id="butViewClient" onclick="validate_data('view','<?echo $row[0];?>');"/>
 	<input type="button" class="edtbutton" name="butEditClient" id="butEditClient" onclick="validate_data('edit','<?echo $row[0];?>');"/>
 	<input type="button" class="delbutton" name="butDeleteClient" id="butDeleteClient" onclick="validate_data('delete','<?echo $row[0];?>');"/>
@@ -130,8 +129,6 @@ include("connection.php");
 
 <div class="footer">
 <ul class="footerContact">
-	Click here to <a href="cp_register.php?act=view"><b>view</b> </a> or 
-	<a href="cp_register.php?act=edit"><b> modify </b></a>your profile
 </ul>
 </div>
 <!-- Footer Panel End -->

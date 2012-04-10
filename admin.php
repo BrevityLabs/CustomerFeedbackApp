@@ -10,15 +10,14 @@ include("lang/lang_engine.php");
   <title><?php echo Translator::translate('admin_title',$lang);?></title>
 	  
   <link href="css/reset.css" rel="stylesheet" type="text/css"/>
-  <link href="css/layout2.css" rel="stylesheet" type="text/css"/>
+  <link href="css/layout.css" rel="stylesheet" type="text/css"/>
  
 </head>
-<body>
+<body class='admin'>
 <div class="header">
 <table>
   <tr>
 	<td><div class="logo"></div></td>
-	<td><div class="title" style="text-align:center;"><h1> <?php echo Translator::translate('admin_subtitle',$lang);?> </h1> </div></td>
 	<td><div class="advert"> <i><?php echo Translator::translate('all_advert',$lang);?></i> </div></td>
   <tr>
 </table>
@@ -29,6 +28,7 @@ include("lang/lang_engine.php");
 
 <!-- Middle Panel Start -->
 <div class="middle">
+<div  style="margin:0 1 auto;font-size:10pt;color:#000000;text-align:center;"> <?php echo Translator::translate('admin_subtitle',$lang);?></div>
 <ul class="footerContact">
 <form name="login" action="admin.php" method="POST">
 <table style='width:500px;border:10px;margin:0 160px auto;'>

@@ -21,31 +21,24 @@ else
   <title><?php echo Translator::translate('all_title',$lang);?></title>
 
   <link href="css/reset.css" rel="stylesheet" type="text/css"></link>
-  <?php if ($_SESSION['is_admin']) { ?>
-	  <link href="css/layout2.css" rel="stylesheet" type="text/css"/>
-  <?php } else { ?>
-	  <link href="css/layout.css" rel="stylesheet" type="text/css"/>
-  <?php } ?>
+  <link href="css/layout.css" rel="stylesheet" type="text/css"/>
   
   <script src="js/ajax_master.js" type="text/javascript"></script>
   <script src="js/validate.js" type="text/javascript"></script>
 </head>
 
-<body>
+<?php if ($_SESSION['is_admin']) { ?>
+<body class='admin'>
+<?php } else { ?>
+<body class='regular'>
+<?php } ?>
 
 <!-- Header Panel Start -->
 <div class="header">
 <table>
   <tr>
- 	<td><div class="logo" style="background:url(./images/admincoy.jpg) no-repeat;">&nbsp;</div></td> 
-	<td><div class="title" style="text-align:center;"><h1>
-	<?php 
-	if ($is_new)
-		echo Translator::translate('ccnew_header',$lang);
-	else
-		echo Translator::translate('ccmod_header',$lang);
-	?></h1> </div></td>
-	<td><div class="advert"> <i> <?php echo Translator::translate('all_advert',$lang);?></i> </div></td>
+ 	<td><div class="logo">&nbsp;</div></td> 
+	<td><div class="advert"> <?php include('ad.php');?> </div></td>
   </tr>
 </table>
 </div>
@@ -56,12 +49,19 @@ else
 
 <!-- Middle Panel Start -->
 <div class="middle">
+<div style="margin:0 1 auto;font-size:10pt;color:#000000;text-align:center;"><?php 
+if ($is_new) 
+	echo Translator::translate('ccnew_header',$lang);
+else 
+	echo Translator::translate('ccmod_header',$lang);
+?></div>
+
 <ul class="footerContact">
 <div id="cform" style="display:block">
 <form action="cc_save.php" method="post" enctype="multipart/form-data" name="centerform" id="centerform">
 	<input type='hidden' id='centguid' name='centguid' value='<?php echo $centguid;?>'></input>
 	<input type='hidden' id='custguid' name='custguid' value='<?php echo $custguid; ?>'></input>
-	<table style="width:500px;border:10px;margin:0 200px auto;">
+	<table style="width:500px;border:10px;margin:0 150px auto;">
       <tbody>
 <?php 
 if (!$is_new) {
@@ -100,7 +100,7 @@ if(!$is_new) {
       		<input type="file" name="txtLogoFilename" id="txtLogoFilename" class="textfield" value="<?php echo $tmp;?>" ></input>
 <?php 
 if(!$is_new) {
-	echo "<img src='./images/" . $centguid.$logoextn . "'>" ;
+	echo "<img width='150px' src='./images/" . $centguid.$logoextn . "'>" ;
 } 
 ?>
           	</td>

@@ -15,15 +15,14 @@ include("lang/lang_engine.php");
  
 </head>
 
-<body>
+<body class='regular'>
 
 <!-- Header Panel Start -->
 <div class="header">
 <table>
   <tr>
 	<td><div class="logo"></div></td>
-	<td><div class="title" style="text-align:center;"><h1> <?php echo Translator::translate('index_subtitle',$lang);?> </h1> </div></td>
-	<td><div class="advert"> <i><?php echo Translator::translate('all_advert',$lang);?></i> </div></td>
+	<td><div class="advert"> <?php include ('ad.php');?> </div></td>
   <tr>
 </table>
 </div>
@@ -34,10 +33,12 @@ include("lang/lang_engine.php");
 <!-- Middle Panel Start -->
 
 <div class="middle">
-<H3> <?php echo Translator::translate('index_what_ccenter',$lang);?></H3>
+<H3> 
+<?php echo Translator::translate('index_what_ccenter',$lang);?></H3>
 <?php echo Translator::translate('index_ccenter_defn',$lang);?> <br/>
-<?php echo Translator::translate('index_exist_user',$lang);?> <a href="cp_register.php?act=new"><?php echo Translator::translate('index_new_user',$lang);?></a>
-<br/><br/>
+&nbsp; - &nbsp; <?php echo Translator::translate('index_exist_user',$lang);?><br/> 
+&nbsp; - &nbsp; <a href="cp_register.php?act=new"><?php echo Translator::translate('index_new_user',$lang);?></a>
+<br/>
 
 <?php
 	if($error_message != '')
@@ -48,15 +49,15 @@ include("lang/lang_engine.php");
 
 <ul class="footerContact">
 <form name="login" action="index.php" method="POST"> 
-    <table style="width:500px;border:10px;margin:0 180px auto;">
+    <table style="width:500px;border:10px;margin:0 120px auto;">
         <tr>
-          <td style="width:150px;border:0px;padding:10px 10px 13px 10px;text-align:right;"><?php echo Translator::translate('index_label_login',$lang);?>:</td>
+          <td style="width:150px;border:0px;padding:10px 10px 13px 10px;text-align:right;"><?php echo Translator::translate('index_label_login',$lang);?> :</td>
           <td style="border:0px;">
 			 <input class="textfield" name="userName" type="text" value="deborah"/>
           </td>
         </tr>
         <tr>
-          <td  style="border:0px;padding:10px 10px 13px 10px;text-align:right;"><?php echo Translator::translate('index_label_password',$lang);?>:</td>
+          <td  style="border:0px;padding:10px 10px 13px 10px;text-align:right;"><?php echo Translator::translate('index_label_password',$lang);?> :</td>
           <td  style="border:0px;">
 			<input class="passwordfield" name="password" type="password" value="password"/>
 		</td>
@@ -73,7 +74,7 @@ include("lang/lang_engine.php");
 		</td>
 	</tr>
     </table>
-	<div style="width:802px;margin:20px 50px auto;padding-bottom:5px;border:0px;text-align:center">
+	<div style="width:802px;margin:10px 7px auto;padding-bottom:5px;border:0px;text-align:center">
 		<input name="login" class="send" value="" type="submit" />
 		<input name="reset" class="reset" value="" type="reset" /> 
 	</div>

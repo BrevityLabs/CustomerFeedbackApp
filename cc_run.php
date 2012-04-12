@@ -59,8 +59,8 @@
 </script>
 </head>
 
-<body class='regular'>
-
+<body>
+<div class='outerregular'>
 <?php
 	
 	$centguid = @$_REQUEST['centguid'] ;
@@ -141,7 +141,7 @@
 <?php 
 	$params = "'" . $fn . "','" . $ln . "','" . $ph . "','" . $em . "','" . $co1 . "','" . $lang . "'" ;
 ?>
-<div style="text-align:center;width:800px;margin:10px 10px auto;padding-bottom:5px;border:0px;">
+<div style="text-align:center;width:800px;margin:20px 10px auto;padding-bottom:5px;border:0px;">
 	<input class="send" value="" onclick="return validate_contact(<?php echo $params;?>);" type="submit" ></input>
     <input class="reset" value="" onclick="" type="reset" ></input> 
 </div>
@@ -174,6 +174,6 @@
 ?>
 <!--	 Copyright End -->
 
-
+</div>
 </body>
 </html>

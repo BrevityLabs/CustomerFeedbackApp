@@ -27,10 +27,11 @@ else
   <script src="js/validate.js" type="text/javascript"></script>
 </head>
 
+<body>
 <?php if ($_SESSION['is_admin']) { ?>
-<body class='admin'>
+<div class='outeradmin'>
 <?php } else { ?>
-<body class='regular'>
+<div class='outerregular'>
 <?php } ?>
 
 <!-- Header Panel Start -->
@@ -182,6 +183,6 @@ if(!$is_new) {
 	mysql_close();
 ?>
 <!-- Copyright End -->
-
+</div>
 </body>
 </html>

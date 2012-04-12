@@ -11,10 +11,11 @@ session_start();
 	  <link href="css/layout.css" rel="stylesheet" type="text/css"/>
   <?php } ?>
 </head>
+<body>
 <?php if ($_SESSION['is_admin']) { ?>
-<body class='admin'>
+<div class='outeradmin'>
 <?php } else { ?>
-<body class='regular'>
+<div class='outerregular'>
 <?php } ?>
 
   <!-- Header Panel Start -->
@@ -120,5 +121,6 @@ if($custguid == NULL) { //new action
 	mysql_close();
 ?>
 <!-- 	 Copyright End -->
+</div>
 </body>
 </html>

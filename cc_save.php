@@ -20,10 +20,11 @@ include ('lang/lang_engine.php');
  
 </head>
 
+<body>
 <?php if ($_SESSION['is_admin']) { ?>
-<body class='admin'>
+<div class='outeradmin'>
 <?php } else { ?>
-<body class='regular'>
+<div class='outerregular'>
 <?php } ?>
 
 <!-- Header Panel Start -->

@@ -13,12 +13,13 @@ include("lang/lang_engine.php");
   <link href="css/layout.css" rel="stylesheet" type="text/css"/>
  
 </head>
-<body class='admin'>
+<body>
+<div class='outeradmin'>
 <div class="header">
 <table>
   <tr>
 	<td><div class="logo"></div></td>
-	<td><div class="advert"> <i><?php echo Translator::translate('all_advert',$lang);?></i> </div></td>
+	<td><div class="advert"> <i><?php include ('ad.php');?></i> </div></td>
   <tr>
 </table>
 </div>
@@ -84,5 +85,6 @@ include("lang/lang_engine.php");
 	mysql_close();
 ?>
 <!--  Copyright End -->
+</div>
 </body>
 </html>

@@ -33,10 +33,11 @@ if (!isset($_SESSION['custguid'])) {
   -->
   </script>
 </head>
+<body>
 <?php if ($_SESSION['is_admin']) { ?>
-<body class='admin'>
+<div class='outeradmin'>
 <?php } else { ?>
-<body class='regular'>
+<div class='outerregular'>
 <?php } ?>
 
 <!-- Header Panel Start -->
@@ -92,7 +93,7 @@ include("connection.php");
 	$count = 0;
 	while($row = mysql_fetch_array($result)) {
 		echo "<tr>";
-		echo  "<td><center>".++$count."</center></td>" ;
+		echo  "<td width='30px'><center>".++$count."</center></td>" ;
 		for ($i = 2; $i < 7; $i++) {
 			if ($i == 2) {
 				$dataval = $row[0] . $row[$i] ;
@@ -116,10 +117,10 @@ include("connection.php");
 <?php
 			}//endif
 		}//endfor ?>
-<td style="border:1px ;">
-	<input type="button" class="viewbutton" name="butViewClient" id="butViewClient" onclick="validate_data('view','<?echo $row[0];?>');"/>
-	<input type="button" class="edtbutton" name="butEditClient" id="butEditClient" onclick="validate_data('edit','<?echo $row[0];?>');"/>
-	<input type="button" class="delbutton" name="butDeleteClient" id="butDeleteClient" onclick="validate_data('delete','<?echo $row[0];?>');"/>
+<td style="border:1px;width:75px">
+	<input type="button" class="viewbutton" name="butViewClient" id="butViewClient" 
+	onclick="validate_data('view','<?echo $row[0];?>');"/><input type="button" class="edtbutton" name="butEditClient" id="butEditClient" 
+	onclick="validate_data('edit','<?echo $row[0];?>');"/><input type="button" class="delbutton" name="butDeleteClient" id="butDeleteClient" onclick="validate_data('delete','<?echo $row[0];?>');"/>
 </td>
 </tr>
 <?php		} //endwhile	
@@ -146,6 +147,6 @@ include("connection.php");
 ?>
 <!--  Copyright End -->
 
-
+</div>
 </body>
 </html>

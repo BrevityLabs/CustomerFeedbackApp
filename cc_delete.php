@@ -15,21 +15,22 @@ session_start();
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <title><?php echo Translator::translate('ccdel_title',$lang);?></title>
   <link href="css/reset.css" rel="stylesheet" type="text/css"/>
-  <?php if ($_SESSION['is_admin']) { ?>
-	  <link href="css/layout2.css" rel="stylesheet" type="text/css"/>
-  <?php } else { ?>
-	  <link href="css/layout.css" rel="stylesheet" type="text/css"/>
-  <?php } ?>
-    </head>
+  <link href="css/layout.css" rel="stylesheet" type="text/css"/>
+</head>
+
 <body>
+<?php if ($_SESSION['is_admin']) { ?>
+<div class='outeradmin'>
+<?php } else { ?>
+<div class='outerregular'>
+<?php } ?>
 
   <!-- Header Panel Start -->
 <div class="header">
 <table>
   <tr>
 	<td><div class="logo"></div></td>
-	<td><div class="title"><center><h1> <?php Translator::translate('ccdel_title',$lang);?></h1></center> </div></td>
-	<td><div class="advert"> <i> <?php Translator::translate('all_advert',$lang);?></i> </div></td>
+	<td><div class="advert"> <?php include('ad.php');?> </div></td>
   <tr>
 </table>
 </div>
@@ -66,7 +67,7 @@ session_start();
 	mysql_close();
 ?>
 <!--	 Copyright End -->
-
+</div>
 </body>
 </html>
  

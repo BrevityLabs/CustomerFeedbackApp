@@ -15,7 +15,8 @@ include("lang/lang_engine.php");
  
 </head>
 
-<body class='regular'>
+<body>
+<div class='outerregular'>
 
 <!-- Header Panel Start -->
 <div class="header">
@@ -95,6 +96,6 @@ include("lang/lang_engine.php");
 	mysql_close();
 ?>
 <!--  Copyright End -->
-
+</div>
 </body>
 </html>

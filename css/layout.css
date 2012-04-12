@@ -5,7 +5,7 @@
 	font-style:normal;
 }
 body{
-    margin:0px;
+    margin:0px auto;
 	padding:0px;
 	color:#555555;
 	font-family: 'Droid Sans', sans-serif;
@@ -13,16 +13,27 @@ body{
 	line-height:20px;
 	text-align: center;
 }
+/*
 body.regular{
-	background: url(../images/header_bg.gif) 5px 0px no-repeat #FFF; 
+	background: url(../images/header_bg.gif) top center no-repeat #FFF; 
 }
 body.admin{
-    background: url(../images/header_bg_new.gif) 5px 0px no-repeat #FFF; 
+    background: url(../images/header_bg_new.gif) top center no-repeat #FFF; 
+}*/
+div.outerregular{
+	width: 800px;
+	margin:0px auto;
+	background: url(../images/header_bg.gif) top center repeat-x #FFF; 
+}
+div.outeradmin{
+	width: 800px;
+	margin:0px auto;
+	background: url(../images/header_bg_new.gif) top center repeat-x #FFF; 
 }
 div.header{
     width:800px;
 	height:124px;
-	margin:3px 2px auto;
+	margin:3px auto;
 	font-size:60px;
 	border: 1px;
 }
@@ -64,7 +75,7 @@ div.advert{
 div.mainMenu{
 	float:right;
 	width:510px;
-	margin-top:5px;
+	margin-top:5px auto;
 }
 div.mainMenu ul{
 	margin:0px;
@@ -73,7 +84,7 @@ div.mainMenu ul{
 div.mainMenu ul li{
 	float:left;
 	margin:0 1px 0 0;
-	padding:0 0 0  0;
+	padding:0 0 0 0;
 	font-size:15px;
 }
 div.mainMenu ul li a{
@@ -100,7 +111,7 @@ div.mainMenu ul li a:hover, div.mainMenu ul li a.active{
 div.banner{
 	height:36px; /* old value 336 */
 	width:800px;
-	margin:0px 4px auto;
+	margin:0px auto;
 }
 div.bannerSlider{
 	height:336px;
@@ -171,7 +182,7 @@ div.serviceTabs li A:hover.more{
 div.middle{
 	width:800px;
 	min-height: 250px;
-	margin:5px 4px auto;
+	margin:5px auto;
 	padding-bottom:5px;
 }
 div.middle H1{
@@ -359,7 +370,7 @@ bottom:20% !important;
 div.footer{
 	float:top center;
 	width:800px;
-	margin:5px 4px auto;
+	margin:5px auto;
 }
 ul.footerLinks{
 	float:left;
@@ -519,7 +530,7 @@ ul.footerContact H1{
 	color:#a1a1a1;
 	display:block;
 	width: 800px;
-	margin:5px 4px;
+	margin:5px auto;
 	padding:5px 0;
 	background:url(../images/line.gif) top left repeat-x;
 }

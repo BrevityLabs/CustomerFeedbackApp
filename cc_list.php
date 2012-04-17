@@ -24,16 +24,18 @@ if (!isset($_SESSION['custguid'])) {
   <script> <!--
 	function open_ccenter(guid,lang) {
 			var wn_props = "left=0,top=0,fullscreen=1,toolbar=0,location=0,directories=no,status=no,menubar=0,scrollbars=0,resizable=no" ;
+			lang = lang.toLowerCase() ;
+			var locn = 'cc_run.php?lang='+lang+'&centguid='+guid+'&wd='+screen.width+'&ht='+screen.height ;
 			wn_props += ",width="+screen.width ;
 			wn_props += ",height="+screen.height ;
-			lang = lang.toLowerCase() ;
-			center_win = window.open('cc_run.php?lang='+lang+'&centguid='+guid,'center_win',wn_props);
+			center_win = window.open(locn,'center_win',wn_props);
 			center_win.focus();			
   	}
   -->
   </script>
 </head>
 <body>
+
 <?php if ($_SESSION['is_admin']) { ?>
 <div class='outeradmin'>
 <?php } else { ?>

@@ -3,7 +3,9 @@
 	include('lang/lang_engine.php');
 	//override session language with site language
 	$lang = $_REQUEST['lang'];
-		
+	$scr_wd = $_REQUEST['wd'];
+	$scr_ht = $_REQUEST['ht'];
+	
 ?>
 <html xmlns="http://www.w3.org/1999/xhtml"><head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -58,9 +60,18 @@
 -->
 </script>
 </head>
-
+<?php //calculate the size of middle div i.e. screen height - 125 header - 100 footer - 40 copyright
+if ($scr_wd > 800) {	//wider screen
+	$h1 = $scr_ht ;
+	$w1 = round($h1 * 1.33) ;
+} else {
+	$w1 = $scr_wd ;
+	$h1 = round($w1 / 1.33) ;
+}
+$style = 'width:'. $w1 . 'px;height:'. $h1 . 'px;margin:0px auto; ' ;
+?>
 <body>
-<div class='outerregular'>
+<div class='outerregular'  style='<?php echo $style;?>'>
 <?php
 	
 	$centguid = @$_REQUEST['centguid'] ;
@@ -76,7 +87,10 @@
 ?>
 
 <!-- Header Panel Start -->
-<div class="header">
+<?php 
+	$style = 'width:'. $w1 . 'px;height:'. 125 . 'px;margin:auto;' ;
+?>
+<div class="header" style='<?php echo $style;?>'>
 <table>
   <tr>
 	<td><div class="logo" style="background:url(./logos/<?php echo $centguid.$logoextn; ?>) no-repeat;">&nbsp;</div></td>
@@ -94,12 +108,22 @@
 </div-->
 
 <!-- Middle Panel Start -->
-<div class="middle">
+<?php 
+	$hmid = ($h1 - 126 - 61 - 21 - 51) ; //screen height - header - footer - copyright - location bar
+	$hcform = 350 ;
+	$hpad = ($hmid - $hcform)/2 ;
+	$style = 'width:' . $w1 . 'px;height:' . ($hmid - $hpad) . 'px;margin:auto;' ;
+?>
+<div class="middle" style='<?php echo $style;?>'>
+
 <ul class="footerContact">
-<div id="cform" style="display:block">
+<?php 
+	$style = 'width:'. $w1 . 'px;height:'. $hcform . 'px;margin:' . $hpad . 'px auto;' ;
+?>
+<div id="cform" style="<?php echo $style;?>">
 <form action="" method="get" enctype="multipart/form-data" name="contactform" id="contactform">
 	<input name="uniqueid" id="uniqueid" type="hidden" value="<?php echo $centguid;?>">
-    <table style="width:500px;border:10px;margin:0 130px auto;">
+    <table style="width:500px;border:0px;margin:auto;">
       <tbody>
         <tr>
 <?php $fn = Translator::translate('cc_first_name',$lang);?>
@@ -139,15 +163,16 @@
       </tbody>
 </table>
 <?php 
-	$params = "'" . $fn . "','" . $ln . "','" . $ph . "','" . $em . "','" . $co1 . "','" . $lang . "'" ;
+	$params = "'" . $fn . "','" . $ln . "','" . $ph . "','" . $em . "','" . $co1 . "','" . $lang . "'" ; 
+	$style = 'width:'. $w1 . 'px;text-align:center;margin:20px auto;padding-bottom:5px; ' ;
 ?>
-<div style="text-align:center;width:800px;margin:20px 10px auto;padding-bottom:5px;border:0px;">
+<div style="<?php echo $style;?>">
 	<input class="send" value="" onclick="return validate_contact(<?php echo $params;?>);" type="submit" ></input>
     <input class="reset" value="" onclick="" type="reset" ></input> 
 </div>
 </form>
 </div> <!-- cform div End -->
-<div style="width:800px;height:10px;margin:5px 5px auto;border:0px;font-size:18px;display:none" id="cformafter">
+<div style="width:<?php echo $w1;?>px;height:10px;margin:5px 5px auto;font-size:18px;display:block" id="cformafter">
 </div>
 </ul>
 </div>
@@ -155,9 +180,9 @@
 <!-- Middle Panel End -->
 
 <!-- Footer Panel Start -->
-<div class="footer">
+<div class="footer" style='width:<?php echo $w1;?>px;height:60px;margin:0 auto; '>
  <ul class="footerContact">
- <div style="text-align:center;">
+ <div style="width:<?php echo $w1;?>px;text-align:center;">
     <input class="chatlive" value="" onclick="open_twitter_window();" type="" ></input> 	  <p/>
 	  <a href="#" onclick="open_twitter_window();">
 		  <font color="#ff6600"><font size="4"><?php echo Translator::translate('cc_twitter_launch',$lang);?></font></font>
@@ -168,12 +193,16 @@
 <!-- Footer Panel End -->
 
 <!-- Copyright Start -->
+<div class="copyright" style='width:<?php echo $w1;?>px;height:20px;'>
+	<div style="text-align: center;">
+		<font size='2' color="#333333">&copy; 2012 Elecmicrotech. All rights reserved.</font>
+	</div>
+</div>
+
 <?php 
-	include('inc_copyright.php');
 	mysql_close();
 ?>
 <!--	 Copyright End -->
-
 </div>
 </body>
 </html>

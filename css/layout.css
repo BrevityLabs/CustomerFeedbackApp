@@ -370,6 +370,7 @@ bottom:20% !important;
 div.footer{
 	float:top center;
 	width:800px;
+	height:100px;
 	margin:5px auto;
 }
 ul.footerLinks{

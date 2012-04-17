@@ -83,10 +83,11 @@ function compare(){
 }
 --></script>
 </head>
+<body>
 <?php if ($_SESSION['is_admin']) { ?>
-<body class='admin'>
+<div class='outeradmin'>
 <?php } else { ?>
-<body class='regular'>
+<div class='outerregular'>
 <?php } ?>
 
 <div class="header">
@@ -210,4 +211,5 @@ if ($action == 'edit' || $action == 'new') { // for new and edit
 	mysql_close();
 ?>
 <!--  Copyright End -->
+</div>
 </body></html>

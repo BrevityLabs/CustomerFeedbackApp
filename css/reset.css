@@ -7,8 +7,13 @@ html, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, 
 	list-style:none;
 	border:4px;
 }
-
 div {
+	margin:0px;
+	padding:0px;
+	list-style:none;
+	border:1px;
+}
+table {
 	margin:0px;
 	padding:0px;
 	list-style:none;

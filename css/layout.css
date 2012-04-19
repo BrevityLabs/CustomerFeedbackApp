@@ -13,13 +13,6 @@ body{
 	line-height:20px;
 	text-align: center;
 }
-/*
-body.regular{
-	background: url(../images/header_bg.gif) top center no-repeat #FFF; 
-}
-body.admin{
-    background: url(../images/header_bg_new.gif) top center no-repeat #FFF; 
-}*/
 div.outerregular{
 	width: 800px;
 	margin:0px auto;
@@ -112,6 +105,7 @@ div.banner{
 	height:36px; /* old value 336 */
 	width:800px;
 	margin:0px auto;
+	border:2px solid red;
 }
 div.bannerSlider{
 	height:336px;
@@ -225,7 +219,7 @@ div.middle H3{
 
 .middle td {
 	font-size:	11px;
-	padding:	0px 0 13px 0;
+	padding:	0px 0 0 0;
 	color:		#443366;
 	border: 	1px ;
 }
@@ -370,7 +364,6 @@ bottom:20% !important;
 div.footer{
 	float:top center;
 	width:800px;
-	height:100px;
 	margin:5px auto;
 }
 ul.footerLinks{
@@ -449,6 +442,18 @@ ul.footerContact H1{
 	font-family: 'ColaborateLightRegular';
 	background:url(../images/tile_head.gif) left bottom repeat-x;
 }
+.footerContact .loginfield {
+	font-size:12px;
+	background:url(../images/login_field_bg.gif) no-repeat;
+	border:none;
+	width:202px;
+	height:24px;
+	display:block;
+	padding:0px 0 0 5px;
+	color:#908d8d;
+	line-height:15px;
+	margin-bottom:1px;
+}
 .footerContact .textfield {
 	font-size:12px;
 	background:url(../images/footer_field_bg.gif) no-repeat;
@@ -463,10 +468,10 @@ ul.footerContact H1{
 }
 .footerContact .passwordfield {
 	font-size:12px;
-	background:url(../images/footer_field_bg.gif) no-repeat;
+	background:url(../images/login_field_bg.gif) no-repeat;
 	border:none;
-	width:302px;
-	height:31px;
+	width:202px;
+	height:24px;
 	display:block;
 	padding:0px 0 0 5px;
 	color:#908d8d;

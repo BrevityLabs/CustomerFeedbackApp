@@ -198,10 +198,6 @@ $style = 'width:'. $w1 . 'px;height:'. $h1 . 'px;margin:0px auto; ' ;
 		<font size='2' color="#333333">&copy; 2012 Elecmicrotech. All rights reserved.</font>
 	</div>
 </div>
-
-<?php 
-	mysql_close();
-?>
 <!--	 Copyright End -->
 </div>
 </body>

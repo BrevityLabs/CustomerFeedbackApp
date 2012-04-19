@@ -3,11 +3,12 @@ session_start();
 	include ("connection.php");
 	include ('lang/lang_engine.php');
 	
-	$centguid = $_REQUEST['centguid'] ;
-		if ($centguid != NULL) {
-			$query="delete from cc_center where centguid = '" . $centguid . "'";
+	$loginid = $_REQUEST['loginid'] ;
+		if ($loginid != NULL) {
+			$query="delete from cc_user where loginid = '" . $loginid . "'";
 			$result = mysql_query($query) or die ("query failed 0");
 		}	
+		mysql_close(); 
 ?>
 
 <html xmlns="http://www.w3.org/1999/xhtml"><head>
@@ -15,21 +16,16 @@ session_start();
   <title><?php echo Translator::translate('ccdel_title',$lang);?></title>
   <link href="css/reset.css" rel="stylesheet" type="text/css"/>
   <link href="css/layout.css" rel="stylesheet" type="text/css"/>
-</head>
-
+ </head>
 <body>
-<?php if ($_SESSION['is_admin']) { ?>
 <div class='outeradmin'>
-<?php } else { ?>
-<div class='outerregular'>
-<?php } ?>
 
   <!-- Header Panel Start -->
 <div class="header">
 <table>
   <tr>
 	<td><div class="logo"></div></td>
-	<td><div class="advert"> <?php include('ad.php');?> </div></td>
+	<td><div class="advert"><?php include('ad.php')?></div></td>
   <tr>
 </table>
 </div>
@@ -41,16 +37,15 @@ session_start();
  
  <!-- Middle Panel Start -->
 <div class="middle"> 
-	<div style="margin:30px auto;text-align:center;font-size:16;color:#000000;min-height:300px"><?php echo Translator::translate('ccdel_succ_msg',$lang);?> 
-	<br>	
-	<br>	
-	<br>	
-	<br>	
-		<ul class="footerContact" style="width:802;text-align:center">
-				<input class="back" value="" onclick="history.go(-1);" type="" ></input>
-		</ul>
-	</div>
- </div>
+<ul class="footerContact" style="width:802;text-align:center">
+<table style="margin:30px auto;text-align:center;font-size:16;color:#000000;min-height:300px"><tr><td>
+	<?php echo Translator::translate('cudel_succ_msg',$lang);?>
+</td></tr><tr><td>	
+	<input class="back" value="" onclick="history.go(-1);" type="" ></input>
+</td></tr></table>
+</ul>
+</div>
+ 
 <!-- Middle Panel End -->
 
 <!-- Footer Panel Start -->

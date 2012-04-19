@@ -29,13 +29,12 @@ include("lang/lang_engine.php");
 
 <!-- Middle Panel Start -->
 <div class="middle">
-<div  style="margin:0 1 auto;font-size:10pt;color:#000000;text-align:center;"> <?php echo Translator::translate('admin_subtitle',$lang);?></div>
+<div  style="margin:0 1 auto;font-size:14pt;color:#EEEEEE;text-align:center;"> <?php echo Translator::translate('admin_subtitle',$lang);?></div>
 <ul class="footerContact">
 <form name="login" action="admin.php" method="POST">
 <table style='width:500px;border:10px;margin:0 160px auto;'>
 	<tr>
-		<td colspan="2" style="width:150px;border:0px;padding:10px 0px 13px 10px;text-align:center;font-color:#000099">
-			<h2> <?php echo Translator::translate('all_login',$lang);?> </h2>	
+		<td colspan="2" style="width:150px;border:0px;padding:10px 0px 13px 10px;text-align:center;font-color:#000099"> &nbsp;
 		</td>
 	<tr>		
 	<tr>
@@ -82,7 +81,6 @@ include("lang/lang_engine.php");
 <!-- Copyright Start -->
 <?php 
 	include('inc_copyright.php');
-	mysql_close();
 ?>
 <!--  Copyright End -->
 </div>

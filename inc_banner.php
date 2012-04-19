@@ -18,12 +18,18 @@ function switch_lang(new_lang) {
 }
 
 --></script>
-<div class="banner">
-<div style="margin:0 1 auto;font-size:10pt;color:#000000;text-align:left;border:1px ;width:398px;height:18px;"><?php 
+<div class='banner'>
+<table>
+<!-- div style="margin:0 1 auto;font-size:10pt;color:#000000;text-align:left;width:398px;height:18px;" -->
+<tr><td style='font-size:9pt;color:#000000;text-align:left;width:400px'>
+<?php 
 	echo Translator::translate('banner_msg_1');
 	echo $lang;
-	?></div>
-<div style="margin:-20 400 auto;font-size:9pt;color:#000000;text-align:right;border:1px ;width:400px;height:18px;">
+?>
+</td>
+<td style='font-size:9pt;color:#000000;text-align:right;width:400px'>
+<!--div style='margin:-20 400 auto;font-size:9pt;color:#000000;text-align:right;width:400px;height:18px;'-->
+
  <?php 
 	echo Translator::translate('banner_msg_2');
  	echo $_SESSION['userName'].'.';
@@ -43,5 +49,5 @@ function switch_lang(new_lang) {
 	}
 ?>
 
-</div>
+</td></tr></table>
 </div>

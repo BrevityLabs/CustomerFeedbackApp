@@ -1,4 +1,4 @@
-var lang = '';
+﻿var lang = '';
 function validate_data(action, id) {
 
 	if(action == 'view') {
@@ -135,9 +135,20 @@ function contactUpdated() {
 }
 
 function reset_display() {
-	var url = "cc_run.php?centguid="+document.getElementById('uniqueid').value;
-	url += '&lang='+lang;
+/* 
+ 	var url = "cc_run.php?lang=" + lang + "&centguid=" + document.getElementById('uniqueid').value;
 	window.open(url,"_self","") ;	
+*/
+	document.getElementById('cform').style.display		= 'block';
+	document.getElementById('cformafter').style.display	= 'none';
+
+/*	document.getElementById('txtFirstName').value 	= '' ;
+	document.getElementById('txtLastName').value 	= '' ;
+	document.getElementById('txtPhone').value 	= '' ;
+	document.getElementById('txtEmail').value 	= '' ;
+	document.getElementById('txtEnquiry').value 	= '' ;
+*/	
+	document.getElementById('contactform').reset();
 }
 
 function delayer() {

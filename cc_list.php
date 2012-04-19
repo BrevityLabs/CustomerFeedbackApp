@@ -55,6 +55,7 @@ if (!isset($_SESSION['custguid'])) {
 
 <!-- Banner Panel Start -->
 <?php include ('inc_banner.php');?>
+
 <!-- Middle Panel Start -->
 
 <div class="middle">
@@ -101,7 +102,7 @@ include("connection.php");
 				$dataval = $row[0] . $row[$i] ;
 ?>
 	<td style="border:1px ;">
-		<img width='150px' src='./logos/<?echo $dataval;?>'>
+		<img width='150px' src='./logos/<?php echo $dataval;?>'>
 		</img>
 	</td>
 <?php
@@ -111,8 +112,8 @@ include("connection.php");
 ?>
 <td style="border:1px ;">
 	<a 	href='' 
-		onclick="open_ccenter('<?echo $row[0];?>','<?echo $row[6];?>');">
-		<?echo $dataval;?>
+		onclick="open_ccenter('<?php echo $row[0];?>','<?php echo $row[6];?>');">
+		<?php echo $dataval;?>
 	</a>
 
 </td>
@@ -121,8 +122,8 @@ include("connection.php");
 		}//endfor ?>
 <td style="border:1px;width:75px">
 	<input type="button" class="viewbutton" name="butViewClient" id="butViewClient" 
-	onclick="validate_data('view','<?echo $row[0];?>');"/><input type="button" class="edtbutton" name="butEditClient" id="butEditClient" 
-	onclick="validate_data('edit','<?echo $row[0];?>');"/><input type="button" class="delbutton" name="butDeleteClient" id="butDeleteClient" onclick="validate_data('delete','<?echo $row[0];?>');"/>
+	onclick="validate_data('view','<?php echo $row[0];?>');"/><input type="button" class="edtbutton" name="butEditClient" id="butEditClient" 
+	onclick="validate_data('edit','<?php echo $row[0];?>');"/><input type="button" class="delbutton" name="butDeleteClient" id="butDeleteClient" onclick="validate_data('delete','<?php echo $row[0];?>');"/>
 </td>
 </tr>
 <?php		} //endwhile	
